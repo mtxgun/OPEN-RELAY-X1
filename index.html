@@ -234,21 +234,10 @@
         relayRef.on("value", (snapshot) => {
           const state = snapshot.val();
           statusText.innerText = state ? "ON" : "OFF";
-          toggleButton.style.backgroundColor = state ? "green" : "blue";
+          toggleButton.style.backgroundColor = state ? "green" : "red";
         });
 
-        toggleButton.onclick = () => {
-          relayRef.get().then(snap => {
-            relayRef.set(!snap.val());
-          });
-        };
-      });
-
-      document.getElementById("allOffBtn").onclick = () => {
-        relays.forEach(relay => {
-          db.ref("/" + relay.path).set(false);
-        });
-      };
+        
     }
 
     document.getElementById("logoutBtn").onclick = () => {
@@ -266,3 +255,4 @@
   </script>
 </body>
 </html>
+
